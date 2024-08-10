@@ -1,6 +1,6 @@
-# 🌦️ Weather App
+# 🌦️ Weather Forecast App
 
-## 📖 Description
+## 📖 Overview
 
 Welcome to the **Weather App**, your go-to solution for real-time weather updates and forecasts. This app allows you to check current weather conditions and view a 5-day forecast for any city worldwide. Built with modern technologies, it provides a seamless experience with its user-friendly interface and responsive design.
 
