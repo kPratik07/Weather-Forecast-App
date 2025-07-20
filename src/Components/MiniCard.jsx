@@ -44,6 +44,9 @@ const MiniCard = ({ time, temp, iconString }) => {
         />
       </div>
       <p className="text-center font-bold">{temp}&deg;C</p>
+      <p className="text-center text-base font-semibold capitalize mt-1">
+        {iconString}
+      </p>
     </div>
   );
 };
