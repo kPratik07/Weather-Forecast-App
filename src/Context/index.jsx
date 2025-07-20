@@ -6,7 +6,7 @@ const StateContext = createContext();
 export const StateContextProvider = ({ children }) => {
   const [weather, setWeather] = useState({});
   const [values, setValues] = useState([]);
-  const [place, setPlace] = useState("Jaipur");
+  const [place, setPlace] = useState("Patna");
   const [thisLocation, setLocation] = useState("");
 
   // Fetch weather and forecast data from OpenWeatherMap

@@ -15,9 +15,14 @@ function App() {
 
   return (
     <div className="w-full h-screen text-white px-8">
-      <nav className="w-full p-3 flex justify-between items-center">
-        <h1 className="font-bold tracking-wide text-3xl">Weather App</h1>
-        <div className="bg-white w-[15rem] overflow-hidden shadow-2xl rounded flex items-center p-2 gap-2">
+      <nav className="w-full p-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
+        <h1
+          className="font-extrabold tracking-wide text-4xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg text-center sm:text-left"
+          style={{ textShadow: "2px 2px 8px rgba(0,0,0,0.3)" }}
+        >
+          Weather App
+        </h1>
+        <div className="bg-white w-full sm:w-[15rem] mx-auto sm:mx-0 overflow-hidden shadow-2xl rounded flex items-center p-2 gap-2">
           <img src={search} alt="search" className="w-[1.5rem] h-[1.5rem]" />
           <input
             onKeyUp={(e) => {
@@ -46,14 +51,33 @@ function App() {
         />
 
         <div className="flex justify-center gap-8 flex-wrap w-[60%]">
-          {values.slice(0, 6).map((curr, index) => (
-            <MiniCard
-              key={index} // Ensure a unique key for each MiniCard
-              time={curr.dt_txt} // Ensure this matches the format from the API response
-              temp={curr.main.temp} // Ensure this matches the format from the API response
-              iconString={curr.weather[0].main} // Ensure this matches the format from the API response
-            />
-          ))}
+          {/* Filter values to get one forecast per day */}
+          {(() => {
+            const dailyForecasts = [];
+            const seenDays = new Set();
+            for (let i = 0; i < values.length; i++) {
+              const date = new Date(values[i].dt_txt);
+              const day = date.toLocaleDateString("en", {
+                weekday: "long",
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+              });
+              if (!seenDays.has(day)) {
+                dailyForecasts.push(values[i]);
+                seenDays.add(day);
+              }
+              if (dailyForecasts.length === 6) break;
+            }
+            return dailyForecasts.map((curr, index) => (
+              <MiniCard
+                key={index}
+                time={curr.dt_txt}
+                temp={curr.main.temp}
+                iconString={curr.weather[0].main}
+              />
+            ));
+          })()}
         </div>
       </main>
     </div>
