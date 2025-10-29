@@ -15,10 +15,14 @@ function App() {
 
   return (
     <div className="w-full h-screen text-white px-8">
-      <nav className="w-full p-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0">
+      <nav className="w-full p-4 sm:p-6 flex flex-col items-center sm:flex-row sm:justify-between gap-4 sm:gap-0">
         <h1
-          className="font-extrabold tracking-wide text-4xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg text-center sm:text-left"
-          style={{ textShadow: "2px 2px 8px rgba(0,0,0,0.3)" }}
+          className="font-extrabold tracking-wide text-4xl sm:text-5xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg text-center"
+          style={{
+            textShadow: "2px 2px 8px rgba(0,0,0,0.3)",
+            letterSpacing: "0.05em",
+            lineHeight: "1.2"
+          }}
         >
           Weather App
         </h1>
